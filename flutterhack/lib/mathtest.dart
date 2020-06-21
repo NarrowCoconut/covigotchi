@@ -81,14 +81,14 @@ class _MathTestState extends State<MathTest> {
       body: new Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/grandma/GrammasHouseFinal.png")
+            image: AssetImage("assets/images/grandma/GrammasHouseFinal.png"),
+            alignment: Alignment.topCenter,
           )
         ),
         child:
         new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-
               new ButtonBar(
               buttonMinWidth: 20,
               buttonHeight: 20,
@@ -125,4 +125,3 @@ class _MathTestState extends State<MathTest> {
     throw UnimplementedError();
   }
 }
-
