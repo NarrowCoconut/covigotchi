@@ -1,0 +1,27 @@
+name: layout
+description: >
+  Sample app from "Building Layouts", https://flutter.io/docs/development/ui/layout.
+version: 1.0.0
+
+environment:
+  sdk: '>=2.0.0-dev.68.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^0.1.2
+  flame: ^0.22.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/grandma/dead.png
+    - assets/images/grandma/healthy.png
+    - assets/images/grandma/sick1.png
+    - assets/images/grandma/sick2.png
+    - assets/images/Logos/Tamagotchi_singiel.jpg
+    - assets/images/kiyomizu-dera.jpg
