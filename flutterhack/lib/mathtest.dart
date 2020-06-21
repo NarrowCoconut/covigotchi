@@ -3,7 +3,6 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'central_game.dart';
-import 'math.dart';
 
 class MathTest extends StatefulWidget {
   @override
@@ -11,7 +10,6 @@ class MathTest extends StatefulWidget {
 }
 
 class _MathTestState extends State<MathTest> {
-  final logic = Math();
   TextEditingController _c;
   double _hp = 100;
   double _food = 100;
@@ -78,10 +76,11 @@ class _MathTestState extends State<MathTest> {
 
     return new Scaffold(
       backgroundColor: _theme.primaryColor,
+      // appBar: ,
       body: new Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/images/grandma/GrammasHouseFinal.png"),
+            image: AssetImage("assets/images/covigotchi/GrammasHouseFinal.png"),
             alignment: Alignment.topCenter,
           )
         ),
@@ -112,7 +111,7 @@ class _MathTestState extends State<MathTest> {
                 });}, child: Text("Masks"),),
                 new Text("Health: $_hp"),
                 new Text("Hunger: $_food"),
-                new Text("Social Life: $_talk")
+                new Text("Social Life: $_talk"),
               ],
             )],),
       ),
@@ -125,3 +124,4 @@ class _MathTestState extends State<MathTest> {
     throw UnimplementedError();
   }
 }
+
