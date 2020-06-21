@@ -23,35 +23,38 @@ class Math {
     });
   }
 
-
+  // total health value
   //Operators
   void decrementHealth() {
-    var num = rng.nextInt(1, 10);
+    var num = rng.nextInt(10);
     health -= num;
   }
 
   void incrementHealth() {
-    var num = rng.nextInt(1, 10);
+    var num = rng.nextInt(10);
     health += num;
+    print(this.toString());
   }
 
   void decrementHunger() {
-    var num = rng.nextInt(1, 10);
+    var num = rng.nextInt(10);
     hunger -= num;
   }
 
   void incrementHunger() {
-    var num = rng.nextInt(1, 10);
+    var num = rng.nextInt(10);
     hunger += num;
+    print(this.toString());
   }
   void decrementSocial() {
-    var num = rng.nextInt(1, 10);
+    var num = rng.nextInt(10);
     social -= num;
   }
 
   void incrementSocial() {
-    var num = rng.nextInt(1, 10);
+    var num = rng.nextInt(10);
     social += num;
+    print(this.toString());
   }
 
   //getters
