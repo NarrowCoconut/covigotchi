@@ -12,6 +12,7 @@ dependencies:
   cupertino_icons: ^0.1.2
   flame: ^0.22.1
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -19,9 +20,9 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/grandma/dead.png
-    - assets/images/grandma/healthy.png
-    - assets/images/grandma/sick1.png
-    - assets/images/grandma/sick2.png
-    - assets/images/Logos/Tamagotchi_singiel.jpg
+    - assets/images/covigotchi/dead.png
+    - assets/images/covigotchi/healthy.png
+    - assets/images/covigotchi/sick1.png
+    - assets/images/covigotchi/sick2.png
+    - assets/images/logos/Tamagotchi_singiel.jpg
     - assets/images/kiyomizu-dera.jpg

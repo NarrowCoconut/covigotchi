@@ -1,0 +1,4 @@
+- Gameboy screen outline
+- Gramma animations
+- Buttons
+- Menus and all that jazz
