@@ -7,6 +7,7 @@ class MainGameScreen extends StatelessWidget {
     ThemeData _theme = Theme.of(context);
     double _width = MediaQuery.of(context).size.width;
     double _height = MediaQuery.of(context).size.height;
+    double _gamePadding = _width / 8;
 
     return Scaffold(
       backgroundColor: _theme.primaryColor,
@@ -16,8 +17,8 @@ class MainGameScreen extends StatelessWidget {
             // padding: const EdgeInsets.all(8.0),
             Container(
                 constraints: BoxConstraints.expand(
-                    height: _height - (_width / 12),
-                    width: _width - (_width / 12)),
+                    height: _height - (_gamePadding),
+                    width: _width - (_gamePadding)),
                 child: CentralGame().widget),
       ),
     );

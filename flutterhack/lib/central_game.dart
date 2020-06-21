@@ -15,10 +15,9 @@ class CentralGame extends BaseGame with HasWidgetsOverlay {
   Size screenSize;
   double characterSize;
   bool inited = false;
-  CoviGotchi coviGotchi;
+  CoviGotchi covigotchi;
 
   CentralGame() {
-    init();
     addWidgetOverlay(
         'Buttons',
         Center(
@@ -36,17 +35,15 @@ class CentralGame extends BaseGame with HasWidgetsOverlay {
   }
 
   void init() async {
-    screenSize = await Flame.util.initialDimensions();
+    resize(await Flame.util.initialDimensions());
   }
 
   @override
   void render(Canvas canvas) {
-    if (!inited) {
-      Rect bgRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
-      Paint bgPaint = Paint();
-      bgPaint.color = Color.fromRGBO(139, 159, 90, 1);
-      canvas.drawRect(bgRect, bgPaint);
-    }
+    Rect bgRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
+    Paint bgPaint = Paint();
+    bgPaint.color = Color.fromRGBO(139, 159, 90, 1);
+    canvas.drawRect(bgRect, bgPaint);
     super.render(canvas);
   }
 
@@ -57,13 +54,20 @@ class CentralGame extends BaseGame with HasWidgetsOverlay {
 
   @override
   void resize(Size size) {
-    screenSize = size;
-    characterSize = screenSize.width / 2;
+    if (!inited) {
+      screenSize = size;
+      characterSize = screenSize.width / 2;
+      covigotchi = CoviGotchi(characterSize);
+      covigotchi.init(screenSize, characterSize);
+      add(covigotchi);
+    }
     super.resize(size);
   }
 }
 
 class CoviGotchi extends SpriteComponent {
+  Size screenSize;
+  double mySize;
   static double rand() => Random.secure().nextDouble();
   static double avgTimeBetweenIdleAnimations = 3;
   static double variationBetweenIdleAnimations = 1;
@@ -77,6 +81,13 @@ class CoviGotchi extends SpriteComponent {
   void moveTo(double x, double y) {
     this.x = x;
     this.y = y;
+  }
+
+  void init(Size screenS, double myS) {
+    screenSize = screenS;
+    mySize = myS;
+    moveTo(screenSize.width / 2 - (mySize / 2),
+        screenSize.height / 2 - (mySize / 2));
   }
 
   @override
