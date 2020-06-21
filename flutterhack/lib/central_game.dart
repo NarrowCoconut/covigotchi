@@ -38,12 +38,10 @@ class CentralGame extends BaseGame with HasWidgetsOverlay {
     resize(await Flame.util.initialDimensions());
   }
 
+  void drawBackground() async {}
+
   @override
   void render(Canvas canvas) {
-    Rect bgRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
-    Paint bgPaint = Paint();
-    bgPaint.color = Color.fromRGBO(139, 159, 90, 1);
-    canvas.drawRect(bgRect, bgPaint);
     super.render(canvas);
   }
 
@@ -54,13 +52,12 @@ class CentralGame extends BaseGame with HasWidgetsOverlay {
 
   @override
   void resize(Size size) {
-    if (!inited) {
-      screenSize = size;
-      characterSize = screenSize.width / 2;
-      covigotchi = CoviGotchi(characterSize);
-      covigotchi.init(screenSize, characterSize);
-      add(covigotchi);
-    }
+    screenSize = size;
+    characterSize = screenSize.width / 2;
+    covigotchi = CoviGotchi(characterSize);
+    covigotchi.init(screenSize, characterSize);
+    add(covigotchi);
+
     super.resize(size);
   }
 }

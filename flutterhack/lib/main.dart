@@ -11,10 +11,10 @@ import 'boilerplatermater.dart';
 void main() {
   debugPaintSizeEnabled = true;
   Flame.audio.disableLog();
-  runApp(CoviGotchi());
+  runApp(App());
 } //End Main()
 
-class CoviGotchi extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setEnabledSystemUIOverlays([]);
