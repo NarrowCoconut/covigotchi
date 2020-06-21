@@ -20,8 +20,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/covigotchi/dead.png
     - assets/images/covigotchi/healthy.png
+    - assets/images/covigotchi/deadAnim/dead1.png
+    - assets/images/covigotchi/deadAnim/dead2.png
+    - assets/images/covigotchi/deadAnim/dead3.png
+    - assets/images/covigotchi/GrammasHouseFinal.png
     - assets/images/covigotchi/sick1.png
     - assets/images/covigotchi/sick2.png
     - assets/images/logos/Tamagotchi_singiel.jpg

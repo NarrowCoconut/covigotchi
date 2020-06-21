@@ -15,13 +15,10 @@ class CentralGame extends BaseGame with HasWidgetsOverlay {
   Size screenSize;
   double characterSize;
   bool inited = false;
+  CoviGotchi coviGotchi;
 
   CentralGame() {
-    Flame.util.setOrientation(DeviceOrientation.portraitUp);
-    CoviGotchi covigotchi = CoviGotchi(200);
-    covigotchi.init();
-    add(covigotchi);
-    add(CoviGotchi(200));
+    init();
     addWidgetOverlay(
         'Buttons',
         Center(
@@ -38,15 +35,19 @@ class CentralGame extends BaseGame with HasWidgetsOverlay {
         ));
   }
 
+  void init() async {
+    screenSize = await Flame.util.initialDimensions();
+  }
+
   @override
   void render(Canvas canvas) {
-    // if (!inited) {
-    //   Rect bgRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
-    //   Paint bgPaint = Paint();
-    //   bgPaint.color = Color.fromRGBO(139, 159, 90, 1);
-    //   canvas.drawRect(bgRect, bgPaint);
-    //   super.render(canvas);
-    // }
+    if (!inited) {
+      Rect bgRect = Rect.fromLTWH(0, 0, screenSize.width, screenSize.height);
+      Paint bgPaint = Paint();
+      bgPaint.color = Color.fromRGBO(139, 159, 90, 1);
+      canvas.drawRect(bgRect, bgPaint);
+    }
+    super.render(canvas);
   }
 
   @override
@@ -63,8 +64,6 @@ class CentralGame extends BaseGame with HasWidgetsOverlay {
 }
 
 class CoviGotchi extends SpriteComponent {
-  // CentralGame game = CentralGame();
-
   static double rand() => Random.secure().nextDouble();
   static double avgTimeBetweenIdleAnimations = 3;
   static double variationBetweenIdleAnimations = 1;
@@ -74,10 +73,6 @@ class CoviGotchi extends SpriteComponent {
 
   CoviGotchi(double dim)
       : super.fromSprite(dim, dim, new Sprite('covigotchi/healthy.png'));
-
-  void init() {
-    // moveTo(game.screenSize.width / 2, game.screenSize.height / 2);
-  }
 
   void moveTo(double x, double y) {
     this.x = x;

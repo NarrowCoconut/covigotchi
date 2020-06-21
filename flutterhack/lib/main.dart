@@ -20,7 +20,7 @@ class CoviGotchi extends StatelessWidget {
     SystemChrome.setEnabledSystemUIOverlays([]);
     return MaterialApp(
         title: 'CoviGotchi',
-        home: MathTest(),
+        home: MainGameScreen(),
         theme: ThemeData(
             primaryColor: Colors.red[300],
             primaryColorDark: Colors.pink[700],

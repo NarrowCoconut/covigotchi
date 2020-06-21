@@ -3,7 +3,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'central_game.dart';
-import 'math.dart';
+//import 'math.dart';
 
 class MathTest extends StatefulWidget {
   @override
@@ -11,7 +11,7 @@ class MathTest extends StatefulWidget {
 }
 
 class _MathTestState extends State<MathTest> {
-  final logic = Math();
+  //final logic = Math();
   TextEditingController _c;
   double _hp = 100;
   double _food = 100;
@@ -36,7 +36,7 @@ class _MathTestState extends State<MathTest> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     _c?.dispose();
     super.dispose();
   }
@@ -56,36 +56,50 @@ class _MathTestState extends State<MathTest> {
     return new Scaffold(
       backgroundColor: _theme.primaryColor,
       body: new Center(
-        child:
-        new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new ButtonBar(
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new ButtonBar(
               buttonMinWidth: 20,
               buttonHeight: 20,
               children: <Widget>[
-                RaisedButton(onPressed: () {
-                  setState(() {
-                    _hp = increment(_hp);
-                    _food = decrement(_food);
-                    _talk = decrement(_talk);
-                  });
-                }, child: Text("Meds"),),
-                RaisedButton(onPressed: () {                  setState(() {
-                  _hp = decrement(_hp);
-                  _food = increment(_food);
-                  _talk = decrement(_talk);
-                });}, child: Text("Munchies"),),
-                RaisedButton(onPressed: () {                  setState(() {
-                  _hp = decrement(_hp);
-                  _food = decrement(_food);
-                  _talk = increment(_talk);
-                });}, child: Text("Masks"),),
+                RaisedButton(
+                  onPressed: () {
+                    setState(() {
+                      _hp = increment(_hp);
+                      _food = decrement(_food);
+                      _talk = decrement(_talk);
+                    });
+                  },
+                  child: Text("Meds"),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    setState(() {
+                      _hp = decrement(_hp);
+                      _food = increment(_food);
+                      _talk = decrement(_talk);
+                    });
+                  },
+                  child: Text("Munchies"),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    setState(() {
+                      _hp = decrement(_hp);
+                      _food = decrement(_food);
+                      _talk = increment(_talk);
+                    });
+                  },
+                  child: Text("Masks"),
+                ),
                 new Text("Health: $_hp"),
                 new Text("Hunger: $_food"),
                 new Text("Social Life: $_talk")
               ],
-            )],),
+            )
+          ],
+        ),
       ),
     );
   }
