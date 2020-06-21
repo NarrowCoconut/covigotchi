@@ -9,6 +9,7 @@ import 'boilerplatermater.dart';
 // import 'package:flutter/rendering.dart' show debugPaintSizeEnabled;
 
 void main() {
+  Flame.images.loadAll(<String>['covigotchi/GrammasHouseFinal']);
   debugPaintSizeEnabled = true;
   Flame.audio.disableLog();
   runApp(App());
