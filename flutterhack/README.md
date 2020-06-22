@@ -1,6 +1,6 @@
-# flutterhack
+# CoviGotchi
 
-A new Flutter application.
+A Mobile Game developed using the Flutter framework
 
 ## Getting Started
 
