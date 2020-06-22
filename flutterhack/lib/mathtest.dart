@@ -15,6 +15,22 @@ class _MathTestState extends State<MathTest> {
   double _food = 100;
   double _talk = 100;
   var _rng = new Random();
+  Image granny = new Image.asset(
+    'assets/images/covigotchi/healthy.png',
+    scale: .3,
+  );
+  Image grannyUnwell = new Image.asset(
+    'assets/images/covigotchi/sick1.png',
+    scale: .3,
+  );
+  Image grannySick = new Image.asset(
+    'assets/images/covigotchi/sick2.png',
+    scale: .3,
+  );
+  Image grannyGone = new Image.asset(
+    'assets/images/covigotchi/deadAnim/dead3.png',
+    scale: .3,
+  );
 //  Timer decrementor;
 
   double decrement(double stat) {
@@ -31,7 +47,7 @@ class _MathTestState extends State<MathTest> {
     if (stat > 100) {
       var remains = stat - 100;
       stat -= remains;
-    } else if (stat < 100){
+    } else if (stat < 100) {
       var num = 10;
       stat += num;
     }
@@ -57,7 +73,7 @@ class _MathTestState extends State<MathTest> {
   }
 
   @override
-  void dispose(){
+  void dispose() {
     _c?.dispose();
     super.dispose();
   }
@@ -79,41 +95,58 @@ class _MathTestState extends State<MathTest> {
       // appBar: ,
       body: new Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage("assets/images/covigotchi/GrammasHouseFinal.png"),
-            alignment: Alignment.topCenter,
-          )
-        ),
-        child:
-        new Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              new ButtonBar(
+            image: DecorationImage(
+          image: AssetImage("assets/images/covigotchi/GrammasHouseFinal.png"),
+          alignment: Alignment.topCenter,
+        )),
+        child: new Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            new ButtonBar(
               buttonMinWidth: 20,
               buttonHeight: 20,
               children: <Widget>[
-                RaisedButton(onPressed: () {
-                  setState(() {
-                    _hp = increment(_hp);
-                    _food = decrement(_food);
-                    _talk = decrement(_talk);
-                  });
-                }, child: Text("Meds"),),
-                RaisedButton(onPressed: () {                  setState(() {
-                  _hp = decrement(_hp);
-                  _food = increment(_food);
-                  _talk = decrement(_talk);
-                });}, child: Text("Munchies"),),
-                RaisedButton(onPressed: () {                  setState(() {
-                  _hp = decrement(_hp);
-                  _food = decrement(_food);
-                  _talk = increment(_talk);
-                });}, child: Text("Masks"),),
+                RaisedButton(
+                  onPressed: () {
+                    setState(() {
+                      _hp = increment(_hp);
+                      _food = decrement(_food);
+                      _talk = decrement(_talk);
+                    });
+                  },
+                  child: Text("Meds"),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    setState(() {
+                      _hp = decrement(_hp);
+                      _food = increment(_food);
+                      _talk = decrement(_talk);
+                    });
+                  },
+                  child: Text("Munchies"),
+                ),
+                RaisedButton(
+                  onPressed: () {
+                    setState(() {
+                      _hp = decrement(_hp);
+                      _food = decrement(_food);
+                      _talk = increment(_talk);
+                    });
+                  },
+                  child: Text("Masks"),
+                ),
                 new Text("Health: $_hp"),
                 new Text("Hunger: $_food"),
                 new Text("Social Life: $_talk"),
+                granny,
+                grannyUnwell,
+                grannySick,
+                grannyGone,
               ],
-            )],),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -124,4 +157,3 @@ class _MathTestState extends State<MathTest> {
     throw UnimplementedError();
   }
 }
-
