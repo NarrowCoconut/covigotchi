@@ -1,5 +1,3 @@
-//tutorial we used to help us get our research for this file https://www.youtube.com/watch?v=oHg5SJYRHA0
-
 import 'dart:async';
 import 'dart:math';
 
@@ -17,20 +15,44 @@ class _MathTestState extends State<MathTest> {
   double _food = 100;
   double _talk = 100;
   var _rng = new Random();
-  Image _granny = new Image.asset('assets/images/covigotchi/healthy.png', scale: .3,);
-  Image _grannyUnwell = new Image.asset('assets/images/covigotchi/sick1.png', scale: .3,);
-  Image _grannySick = new Image.asset('assets/images/covigotchi/sick2.png', scale: .3,);
-  Image _grannyGone = new Image.asset('assets/images/covigotchi/deadAnim/dead3.png', scale: .3,);
+  Image _granny = new Image.asset('assets/images/StatefulHouse/GrammasHealthy.png', scale: .3,);
+  Image _grannyUnwell = new Image.asset('assets/images/StatefulHouse/sickhouse.png', scale: .3,);
+  Image _grannySick = new Image.asset('assets/images/StatefulHouse/sickhouse2.png', scale: .3,);
+  Image _grannyGone = new Image.asset('assets/images/StatefulHouse/deadhouse2.png', scale: .3,);
+  Image _grocery = new Image.asset('assets/images/sprites/groceryBag.png', scale: .3);
+  Image _pills = new Image.asset('assets/images/sprites/medBottle.png', scale: .3,);
+  Image _masks = new Image.asset('assets/images/sprites/n85Mask.png', scale: .3,);
+  Image _title = new Image.asset('assets/images/CovaGotchi.png', scale: 2);
 //  Timer decrementor;
-
-
+  String _greeting = "How ya doing honey?";
+  String _munch = "GRANNY HUNGRY! NOM! NOM! NOM!";
+  String _intro = "Keep granny happy and healthy";
+  String _medicine = "That's where those pills went!";
+  String _cover = "Put a mask on and say hello dear";
+  String _gameOver = "GAME OVER";
+  String _sick = "granny's feeling a little ill";
+  String _message = "";
+// The granny code
+  String message() {
+    if(grannyState() == _granny) {
+      return _greeting;
+    } else if(grannyState() == _grannyUnwell || grannyState() == _grannySick) {
+      return _sick;
+    } else if(grannyState() == _grannyGone) {
+      return _gameOver;
+    }
+  }
   Image grannyState() {
     var average = (_hp + _food + _talk) / 3;
-    if (average < 75) {
-      return _granny;
-    } else if (average > 50 && average <= 75) {
+    if (average > 50 && average <= 75) {
       return _grannyUnwell;
-    } else if (average < 25 && average > 1)
+    } else if (average < 25 && average > 1) {
+      return _grannySick;
+    } else if (_hp == 0 || _food == 0 || _talk == 0) {
+      return _grannyGone;
+    } else {
+      return _granny;
+    }
   }
 
   double decrement(double stat) {
@@ -47,7 +69,7 @@ class _MathTestState extends State<MathTest> {
     if (stat > 100) {
       var remains = stat - 100;
       stat -= remains;
-    } else if (stat < 100) {
+    } else if (stat < 100){
       var num = 10;
       stat += num;
     }
@@ -73,7 +95,7 @@ class _MathTestState extends State<MathTest> {
   }
 
   @override
-  void dispose() {
+  void dispose(){
     _c?.dispose();
     super.dispose();
   }
@@ -94,59 +116,49 @@ class _MathTestState extends State<MathTest> {
       backgroundColor: _theme.primaryColor,
       // appBar: ,
       body: new Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-          image: AssetImage("assets/images/covigotchi/GrammasHouseFinal.png"),
-          alignment: Alignment.topCenter,
-        )),
-        child: new Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            new ButtonBar(
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     image: AssetImage("assets/images/covigotchi/GrammasHouseFinal.png"),
+        //     alignment: Alignment.topCenter,
+        //   )
+        // ),
+        child:
+        new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              _title,
+              new ButtonBar(
               buttonMinWidth: 20,
               buttonHeight: 20,
               children: <Widget>[
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      _hp = increment(_hp);
-                      _food = decrement(_food);
-                      _talk = decrement(_talk);
-                    });
-                  },
-                  child: Text("Meds"),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      _hp = decrement(_hp);
-                      _food = increment(_food);
-                      _talk = decrement(_talk);
-                    });
-                  },
-                  child: Text("Munchies"),
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    setState(() {
-                      _hp = decrement(_hp);
-                      _food = decrement(_food);
-                      _talk = increment(_talk);
-                    });
-                  },
-                  child: Text("Masks"),
-                ),
+                RaisedButton(onPressed: () {
+                  setState(() {
+                    _hp = increment(_hp);
+                    _food = decrement(_food);
+                    _talk = decrement(_talk);
+                    _message = _medicine;
+                  });
+                }, child: _pills,),
+                RaisedButton(onPressed: () {                  setState(() {
+                  _hp = decrement(_hp);
+                  _food = increment(_food);
+                  _talk = decrement(_talk);
+                  _message = _munch;
+                });}, child: _grocery,),
+                RaisedButton(onPressed: () {                  setState(() {
+                  _hp = decrement(_hp);
+                  _food = decrement(_food);
+                  _talk = increment(_talk);
+                  _message = _cover;
+                });}, child: _masks,),
+                grannyState(),
+                new Text(_message),
+                new Text(message()),
                 new Text("Health: $_hp"),
                 new Text("Hunger: $_food"),
                 new Text("Social Life: $_talk"),
-                granny,
-                grannyUnwell,
-                grannySick,
-                grannyGone,
               ],
-            )
-          ],
-        ),
+            )],),
       ),
     );
   }
@@ -157,6 +169,3 @@ class _MathTestState extends State<MathTest> {
     throw UnimplementedError();
   }
 }
-
-
-//OWO
