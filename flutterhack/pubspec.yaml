@@ -27,5 +27,11 @@ flutter:
     - assets/images/covigotchi/GrammasHouseFinal.png
     - assets/images/covigotchi/sick1.png
     - assets/images/covigotchi/sick2.png
-    - assets/images/logos/Tamagotchi_singiel.jpg
-    - assets/images/kiyomizu-dera.jpg
+    - assets/images/StatefulHouse/GrammasHealthy.png
+    - assets/images/StatefulHouse/sickhouse.png
+    - assets/images/StatefulHouse/sickhouse2.png
+    - assets/images/StatefulHouse/deadhouse2.png
+    - assets/images/sprites/groceryBag.png
+    - assets/images/sprites/medBottle.png
+    - assets/images/sprites/n85Mask.png
+    - assets/images/CovaGotchi.png
