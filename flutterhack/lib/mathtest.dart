@@ -15,7 +15,21 @@ class _MathTestState extends State<MathTest> {
   double _food = 100;
   double _talk = 100;
   var _rng = new Random();
+  Image _granny = new Image.asset('assets/images/covigotchi/healthy.png', scale: .3,);
+  Image _grannyUnwell = new Image.asset('assets/images/covigotchi/sick1.png', scale: .3,);
+  Image _grannySick = new Image.asset('assets/images/covigotchi/sick2.png', scale: .3,);
+  Image _grannyGone = new Image.asset('assets/images/covigotchi/deadAnim/dead3.png', scale: .3,);
 //  Timer decrementor;
+
+
+  Image grannyState() {
+    var average = (_hp + _food + _talk) / 3;
+    if (average < 75) {
+      return _granny;
+    } else if (average > 50 && average <= 75) {
+      return _grannyUnwell;
+    } else if (average < 25 && average > 1)
+  }
 
   double decrement(double stat) {
     var remainder = stat / 10;
@@ -112,6 +126,10 @@ class _MathTestState extends State<MathTest> {
                 new Text("Health: $_hp"),
                 new Text("Hunger: $_food"),
                 new Text("Social Life: $_talk"),
+                granny,
+                grannyUnwell,
+                grannySick,
+                grannyGone,
               ],
             )],),
       ),
@@ -124,4 +142,3 @@ class _MathTestState extends State<MathTest> {
     throw UnimplementedError();
   }
 }
-
